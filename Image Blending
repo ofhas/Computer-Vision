@@ -1,36 +1,25 @@
-
+#%%
 import numpy as np
 import matplotlib.pyplot as plt
 import cv2
-from PIL import Image
+#%%
 
 forest_img = cv2.imread("forest.jpg")
-
 pyramid_img = cv2.imread("pyramids.png")
 pyramid_img = cv2.cvtColor(pyramid_img, cv2.COLOR_BGR2GRAY)
 forest_img = cv2.cvtColor(forest_img, cv2.COLOR_BGR2GRAY)
-print(pyramid_img.shape)
-print(forest_img.shape)
-# we'll use the shpae method in order to get the image sizes to resize them into the same size
 
-dim_for_resize = (1600, 1200) 
-new_pyramid = cv2.resize(pyramid_img, dim_for_resize) # this will resize the pyramid image to the same size
-# in this particular case is 1600*1200
-# as the forest
+forest_img_resize = cv2.resize(forest_img, (pyramid_img.shape[1], pyramid_img.shape[0]))
+
+pyramid_img[pyramid_img == 0] = forest_img_resize[pyramid_img == 0]
 
 
+res_im = pyramid_img
+size = (1200, 800)
+new_res = cv2.resize(res_im, size)
 
-
-
-
-newForest = cv2.addWeighted(forest_img, 0.5, new_pyramid, 0, 0) # this will blend both images togather creating a new image
-
-
-#forest_img[new_pyramid.shape[0], new_pyramid.shape[1]] = new_pyramid
 #%%
 plt.figure()
-plt.imshow(newForest, cmap='gray', vmin=0, vmax=255)
-
+plt.imshow(new_res, cmap='gray', vmin=0, vmax=255)
 plt.show()
-
 #%%
