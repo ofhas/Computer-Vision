@@ -1,3 +1,4 @@
+#%%
 import numpy as np
 import matplotlib.pyplot as plt
 import cv2
@@ -13,8 +14,11 @@ forest_img_resize = cv2.resize(forest_img, (pyramid_img.shape[1], pyramid_img.sh
 pyramid_img[pyramid_img == 0] = forest_img_resize[pyramid_img == 0]
 
 
+
+size = forest_img.shape[1::-1] # this will allow you to get any image shape size
+
 res_im = pyramid_img
-size = (1200, 800)
+
 new_res = cv2.resize(res_im, size)
 
 #%%
