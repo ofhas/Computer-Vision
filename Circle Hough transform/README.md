@@ -23,9 +23,9 @@ The following result is using the build in cv2 function:\
 
 part 2:
 
-Here we'll find the correct radius in order to attribute the correct name to each coin:\
+Here we'll find the correct radius in order to attribute the correct name to each coin:
 
 original image:\
 ![alt text](https://github.com/ofhas/Computer-Vision/blob/master/Circle%20Hough%20transform/img5.JPG)\
 Result:\
-![alt text](https://github.com/ofhas/Computer-Vision/blob/master/Circle%20Hough%20transform/img6.JPG)\
+![alt text](https://github.com/ofhas/Computer-Vision/blob/master/Circle%20Hough%20transform/img6.JPG)
