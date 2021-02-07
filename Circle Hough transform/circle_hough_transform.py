@@ -194,8 +194,7 @@ for xyr in circles[0, :]:
         cv2.putText(res, coins_name[2], (xyr[0], xyr[1]), cv2.FONT_HERSHEY_TRIPLEX, 1, (255, 255, 20))
     
     
-     #different coin sizes can be found here:
-    # https://avocadoughtoast.com/weights-sizes-us-coins/
+   
     pass
 
 plt.figure(figsize=figsize)
