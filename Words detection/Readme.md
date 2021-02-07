@@ -1,8 +1,10 @@
 # Computer-Vision
 # words detector
 
-in this project we'll implement a simple words detector using masks and filters.
-first I've used threshold filter over the original image:
+in this project we'll implement a simple words detector using masks and filters.\
+Original image:
+![alt text](https://github.com/ofhas/Computer-Vision/blob/master/Words%20detection/news.jpg)
+first I've used threshold filter over the original image to turn the image to a binary one:
 ![alt text](https://github.com/ofhas/Computer-Vision/blob/master/Words%20detection/word1.JPG)
 Then I've dilated it:
 ![alt text](https://github.com/ofhas/Computer-Vision/blob/master/Words%20detection/word2.JPG)
