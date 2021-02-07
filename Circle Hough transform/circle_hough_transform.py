@@ -163,8 +163,8 @@ im3 = cv2.cvtColor(im3, cv2.COLOR_BGR2RGB)
 im = cv2.cvtColor(im3, cv2.COLOR_RGB2GRAY)
 res = im3.copy()
 
-# TODO: fill in the best values possible
-# to detect the right circle dimeter and place
+# 
+# detect the right circle dimeter and place
 acc_ratio = 1.5
 min_dist = 105
 canny_upper_th = 100
@@ -192,9 +192,9 @@ for xyr in circles[0, :]:
         cv2.putText(res, coins_name[1], (xyr[0], xyr[1]), cv2.FONT_HERSHEY_TRIPLEX, 1, (255, 255, 0))
     else:
         cv2.putText(res, coins_name[2], (xyr[0], xyr[1]), cv2.FONT_HERSHEY_TRIPLEX, 1, (255, 255, 20))
-    # TODO: write currency type on each coin.
-    # use cv2.putText() and the font vars above.
-    # If you need, different coin sizes can be found here:
+    
+    
+     #different coin sizes can be found here:
     # https://avocadoughtoast.com/weights-sizes-us-coins/
     pass
 
