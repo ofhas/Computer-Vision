@@ -106,14 +106,14 @@ for i in range(edge_inds.shape[0]):
                 # one line fill here
                 acc_mat_th_dist[b0, a0, r0] = 0
 # %%
-#plt.figure(figsize=figsize)
-#plt.imshow(np.sum(acc_mat_th_dist, axis=2), extent=[
-    #          b_vec.min(), b_vec.max(), a_vec.max(), a_vec.min()], aspect='auto')
-#plt.xlabel('a')
-#plt.ylabel('b')
-#plt.title('accumulation matrix TH and min_dist summed over r axis')
-#plt.colorbar()
-#plt.show()
+plt.figure(figsize=figsize)
+plt.imshow(np.sum(acc_mat_th_dist, axis=2), extent=[
+             b_vec.min(), b_vec.max(), a_vec.max(), a_vec.min()], aspect='auto')
+plt.xlabel('a')
+plt.ylabel('b')
+plt.title('accumulation matrix TH and min_dist summed over r axis')
+plt.colorbar()
+plt.show()
 
 # %% [markdown]
 # ## Plot circles found by hough
