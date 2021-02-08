@@ -69,7 +69,13 @@ for yx in edge_inds:
             # update accumulation matrix (one line)
             acc_mat[a, b, r_ind] += 1
 # %%
-
+plt.figure(figsize=figsize)
+plt.imshow(np.max(acc_mat, axis=2))
+plt.xlabel('a')
+plt.ylabel('b')
+plt.title('accumulation matrix maxed over r axis')
+plt.colorbar()
+plt.show()
 
 # %% [markdown]
 # ## Threshold accumulation matrix
