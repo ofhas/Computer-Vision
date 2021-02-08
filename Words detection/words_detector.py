@@ -1,5 +1,4 @@
-#%% [markdown]
-
+#!/usr/bin/env python3
 # Find different words in newspaper article
 # We'll do this using morphology operators and connected components.
 # %%
