@@ -9,7 +9,6 @@ import numpy as np
 
 figsize = (10, 10)
 
-# %% [markdown]
 # ## Import an image
 # %%
 im3 = cv2.imread("circles.bmp")
@@ -24,7 +23,6 @@ plt.show()
 blur_image = cv2.GaussianBlur(im, (3, 3), 0)
 
 
-# %% [markdown]
 # ## Find edges of an image using Canny
 # %%
 # Canny edge detection of image
@@ -36,7 +34,6 @@ plt.title("canny  image")
 plt.show()
 
 
-# %% [markdown]
 # ## Initialize accumulation matrix
 # %%
 # state parameters for accumulation matrix
@@ -50,7 +47,6 @@ b_vec = np.arange(0, im.shape[0], 1)
 # init accumulation matrix (one line)
 acc_mat = np.zeros((a_vec.shape[0], b_vec.shape[0], r_vec.shape[0]))# in this case we also need radius due to a circles we need to detect
 
-# %% [markdown]
 # ## Fill accumulation matrix
 # %%
 # get indices of edges
@@ -77,14 +73,12 @@ plt.title('accumulation matrix maxed over r axis')
 plt.colorbar()
 plt.show()
 
-# %% [markdown]
 # ## Threshold accumulation matrix
 # %%
 TH = 50
 acc_mat_th = acc_mat > TH
 
 
-# %% [markdown]
 # ## Min distance
 # This is a new feature that deals with noise in the accumulation matrix.
 # 1. Search in the neighborhood of each above TH bin for other above TH bins
@@ -121,7 +115,6 @@ plt.title('accumulation matrix TH and min_dist summed over r axis')
 plt.colorbar()
 plt.show()
 
-# %% [markdown]
 # ## Plot circles found by hough
 # %%
 # get indices of acc_mat_th_dist
@@ -140,7 +133,6 @@ plt.figure(figsize=figsize)
 plt.imshow(res)
 plt.title("final result")
 plt.show()
-# %% [markdown]
 # ## Comparison to cv2.HoughCircles
 # %%
 res = im3.copy()
@@ -158,7 +150,6 @@ plt.imshow(res)
 plt.title("final result- cv2.HoughCircles")
 plt.show()
 
-# %% [markdown]
 # Now let's try something a bit more complex...
 # Let's identify coins!
 # in the image given below we want to detect each coin currency,
