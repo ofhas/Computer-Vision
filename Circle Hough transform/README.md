@@ -1,4 +1,4 @@
-In this project we'll implement the circle hough transform filter compared to the cv2 built in function.
+In this project we'll implement the circle hough transform compared to the cv2 built in function.
 
 I've used the following imge as a test subject:\
 ![alt text](https://github.com/ofhas/Computer-Vision/blob/master/Circle%20Hough%20transform/img1.JPG)
@@ -16,7 +16,7 @@ After performing a threshold(this is a noise cleaning method) on the accumulatio
 
 And the final result:\
 ![alt text](https://github.com/ofhas/Computer-Vision/blob/master/Circle%20Hough%20transform/img3.JPG)\
-as we can see the filter I've implemented did not catch all circleS but gave a fair proof of concept to the algorithm.
+as we can see the filter I've implemented did not catch all circles but gave a fair proof of concept to the algorithm.
 
 The following result is using the build in cv2 function:\
 ![alt text](https://github.com/ofhas/Computer-Vision/blob/master/Circle%20Hough%20transform/img4.JPG)\
