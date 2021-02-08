@@ -1,6 +1,5 @@
-
-#Circle Hough transform
-#we will implement step by step circle hough transform.
+# Circle Hough transform
+# we will implement step by step circle hough transform.
 
 # %%
 from matplotlib import pyplot as plt
@@ -19,9 +18,7 @@ plt.imshow(im3, cmap='gray', vmin=0, vmax=255)
 plt.title("original image")
 plt.show()
 
-
 blur_image = cv2.GaussianBlur(im, (3, 3), 0)
-
 
 # ## Find edges of an image using Canny
 # %%
@@ -33,19 +30,19 @@ plt.imshow(canny)
 plt.title("canny  image")
 plt.show()
 
-
 # ## Initialize accumulation matrix
 # %%
 # state parameters for accumulation matrix
 
 r_step = 1
-rmax = np.sqrt(im.shape[0]**2+im.shape[1]**2)
+rmax = np.sqrt(im.shape[0] ** 2 + im.shape[1] ** 2)
 r_vec = np.arange(0, rmax, r_step)
 a_vec = np.arange(0, im.shape[1], 1)
 b_vec = np.arange(0, im.shape[0], 1)
 
 # init accumulation matrix (one line)
-acc_mat = np.zeros((a_vec.shape[0], b_vec.shape[0], r_vec.shape[0]))# in this case we also need radius due to a circles we need to detect
+acc_mat = np.zeros((a_vec.shape[0], b_vec.shape[0],
+                    r_vec.shape[0]))  # in this case we also need radius due to a circles we need to detect
 
 # ## Fill accumulation matrix
 # %%
@@ -60,8 +57,8 @@ for yx in edge_inds:
         for b, b0 in enumerate(b_vec):
             # find best corresponding r0 (1 line)
 
-            r0 = np.sqrt((x-a0)**2+(y-b0)**2)
-            r_ind = np.argmin(np.abs(r0-r_vec))
+            r0 = np.sqrt((x - a0) ** 2 + (y - b0) ** 2)
+            r_ind = np.argmin(np.abs(r0 - r_vec))
             # update accumulation matrix (one line)
             acc_mat[a, b, r_ind] += 1
 # %%
@@ -78,7 +75,6 @@ plt.show()
 TH = 50
 acc_mat_th = acc_mat > TH
 
-
 # ## Min distance
 # This is a new feature that deals with noise in the accumulation matrix.
 # 1. Search in the neighborhood of each above TH bin for other above TH bins
@@ -94,11 +90,11 @@ for i in range(edge_inds.shape[0]):
     b0, a0, r0 = edge_inds[i]
 
     # search in all other above TH bins
-    for j in range(i+1, edge_inds.shape[0]):
+    for j in range(i + 1, edge_inds.shape[0]):
         b1, a1, r1 = edge_inds[j]
 
         # if the two above are neighbors (below min_dist) - delete the less important
-        if ((r0-r1)*r_step)**2+((a0-a1))**2+((b0-b1))**2 < min_dist**2:
+        if ((r0 - r1) * r_step) ** 2 + ((a0 - a1)) ** 2 + ((b0 - b1)) ** 2 < min_dist ** 2:
             if acc_mat[b0, a0, r0] >= acc_mat[b1, a1, r1]:
                 # one line fill here
                 acc_mat_th_dist[b1, a1, r1] = 0
@@ -108,7 +104,7 @@ for i in range(edge_inds.shape[0]):
 # %%
 plt.figure(figsize=figsize)
 plt.imshow(np.sum(acc_mat_th_dist, axis=2), extent=[
-             b_vec.min(), b_vec.max(), a_vec.max(), a_vec.min()], aspect='auto')
+    b_vec.min(), b_vec.max(), a_vec.max(), a_vec.min()], aspect='auto')
 plt.xlabel('a')
 plt.ylabel('b')
 plt.title('accumulation matrix TH and min_dist summed over r axis')
@@ -160,15 +156,21 @@ im3 = cv2.cvtColor(im3, cv2.COLOR_BGR2RGB)
 im = cv2.cvtColor(im3, cv2.COLOR_RGB2GRAY)
 res = im3.copy()
 
-# 
+
+plt.figure(figsize=figsize)
+plt.imshow(im3)
+plt.title('Coins')
+plt.show()
+#
 # detect the right circle dimeter and place
 acc_ratio = 1.5
 min_dist = 105
 canny_upper_th = 100
 acc_th = 85
 
-circles = cv2.HoughCircles(im, cv2.HOUGH_GRADIENT, acc_ratio, min_dist, param1=canny_upper_th, param2=acc_th, minRadius=40, maxRadius=65)
-#circles = cv2.HoughCircles(im, cv2.HOUGH_GRADIENT, dp=1.5, minDist=105, param1=100, param2=85, minRadius=40, maxRadius=65)
+circles = cv2.HoughCircles(im, cv2.HOUGH_GRADIENT, acc_ratio, min_dist, param1=canny_upper_th, param2=acc_th,
+                           minRadius=40, maxRadius=65)
+# circles = cv2.HoughCircles(im, cv2.HOUGH_GRADIENT, dp=1.5, minDist=105, param1=100, param2=85, minRadius=40, maxRadius=65)
 # === font vars
 font = cv2.FONT_HERSHEY_SIMPLEX
 bottomLeftCornerOfText = (10, 500)
@@ -189,9 +191,7 @@ for xyr in circles[0, :]:
         cv2.putText(res, coins_name[1], (xyr[0], xyr[1]), cv2.FONT_HERSHEY_TRIPLEX, 1, (255, 255, 0))
     else:
         cv2.putText(res, coins_name[2], (xyr[0], xyr[1]), cv2.FONT_HERSHEY_TRIPLEX, 1, (255, 255, 20))
-    
-    
-   
+
     pass
 
 plt.figure(figsize=figsize)
