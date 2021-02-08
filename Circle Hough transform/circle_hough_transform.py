@@ -1,8 +1,8 @@
+#!/usr/bin/env python3
 # Circle Hough transform
 # we will implement step by step circle hough transform.
 
 # %%
-#!/usr/bin/env python3
 from matplotlib import pyplot as plt
 import cv2
 import numpy as np
