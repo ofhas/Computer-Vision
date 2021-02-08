@@ -143,7 +143,7 @@ circles = cv2.HoughCircles(im, cv2.HOUGH_GRADIENT, 1, 10, param1=100, param2=8, 
 
 for xyr in circles[0, :]:
     # draw the outer circle
-    res = cv2.circle(res, (xyr[0], xyr[1]), xyr[2], (0, 255, 0), 1)
+    res = cv2.circle(res, (xyr[0], xyr[1]), int(xyr[2]), (0, 255, 0), 1)
 
 plt.figure(figsize=figsize)
 plt.imshow(res)
@@ -179,7 +179,7 @@ lineType = 2
 # ==== for each detected circle
 for xyr in circles[0, :]:
     # draw the outer circle
-    res = cv2.circle(res, (xyr[0], xyr[1]), xyr[2], (0, 255, 0), 3)
+    res = cv2.circle(res, (xyr[0], xyr[1]), int(xyr[2]), (0, 255, 0), 3)
     print(xyr[2])
 
     coins_name = ['Quarter', 'Nickel', 'Dime']
