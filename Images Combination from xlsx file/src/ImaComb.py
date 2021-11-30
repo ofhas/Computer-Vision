@@ -8,7 +8,7 @@ import numpy as np
 
 col_list = ["pic_north", 'pic_east', 'pic_west', "pic_south", 'MK', 'BID']
 
-path = 'enter you path to xlsx file'
+path = 'enter your path to xlsx file'
 
 
 
