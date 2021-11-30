@@ -8,8 +8,8 @@ import numpy as np
 
 col_list = ["pic_north", 'pic_east', 'pic_west', "pic_south", 'MK', 'BID']
 
-path = 'C:/Users/a/PycharmProjects/pythonProject/test.xls'
-print('Path:', path)
+path = 'enter you path to xlsx file'
+
 
 
 df = pd.read_excel(path, usecols=col_list)
